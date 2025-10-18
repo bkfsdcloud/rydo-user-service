@@ -106,6 +106,16 @@
 	        <groupId>com.github.ben-manes.caffeine</groupId>
 	        <artifactId>caffeine</artifactId>
 	    </dependency>
+	    
+	    <!-- Geo Service Start -->
+	    <!-- Google Maps API client -->
+	    <dependency>
+	        <groupId>com.google.maps</groupId>
+	        <artifactId>google-maps-services</artifactId>
+	        <version>0.18.1</version>
+	    </dependency>
+	    
+	    <!-- Geo Service End -->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

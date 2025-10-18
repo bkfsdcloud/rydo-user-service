@@ -27,8 +27,8 @@ server:
   port: ${SERVER_PORT}
 
 google:
-  api:
-    key: AIzaSyDqaqO6czuq1cTzTetNJU6yhnQP2b6_k8U
+  maps:
+    api-key: AIzaSyDqaqO6czuq1cTzTetNJU6yhnQP2b6_k8U
 
 logging:
   level:

@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 @Service
 public class MapServiceImpl implements MapService {
 	
-	@Value("${google.api.key}")
+	@Value("${google.api.key:}")
     private String apiKey;
 
     private final WebClient webClient;
