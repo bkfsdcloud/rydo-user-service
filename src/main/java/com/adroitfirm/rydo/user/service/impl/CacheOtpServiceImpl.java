@@ -3,15 +3,17 @@ package com.adroitfirm.rydo.user.service.impl;
 import java.util.Random;
 
 import org.springframework.cache.CacheManager;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.adroitfirm.rydo.user.service.OtpService;
 
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 @Service
-public class OtpServiceImpl implements OtpService {
+@Profile(value = {"local","default"})
+@AllArgsConstructor
+public class CacheOtpServiceImpl implements OtpService {
 
 	private final CacheManager cacheManager;
     private final Random random = new Random();
