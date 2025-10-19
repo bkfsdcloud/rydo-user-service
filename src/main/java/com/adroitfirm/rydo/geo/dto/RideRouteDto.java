@@ -7,7 +7,6 @@ import com.adroitfirm.rydo.geo.model.Coordinate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.google.maps.model.DirectionsLeg;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
