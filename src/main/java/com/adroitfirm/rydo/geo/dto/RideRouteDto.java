@@ -25,6 +25,8 @@ public class RideRouteDto {
     Coordinate originCoord;
 	Coordinate destCoord;
     List<Map<String, Double>> coordinates;
+    List<Map<String, Double>> coordinates1;
+    String encodedPath;
     double distanceKm;
     long durationMins;
     String distanceTxt;

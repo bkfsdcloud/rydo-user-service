@@ -2,6 +2,8 @@ package com.adroitfirm.rydo.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.Builder.Default;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -35,6 +37,7 @@ public class User {
     private String profileImageUrl;
 
     @Column(name = "is_active")
+    @Default
     private Boolean isActive = true;
 
     @Column(name = "device_id", length = 100)

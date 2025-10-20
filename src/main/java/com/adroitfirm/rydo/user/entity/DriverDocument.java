@@ -2,6 +2,8 @@ package com.adroitfirm.rydo.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.Builder.Default;
+
 import java.time.LocalDate;
 
 @Entity
@@ -34,6 +36,7 @@ public class DriverDocument {
     @Column(name = "expiry_date")
     private LocalDate expiryDate;
 
+    @Default
     private Boolean verified = false;
 
     @Column(name = "uploaded_at")

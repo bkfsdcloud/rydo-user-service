@@ -2,6 +2,8 @@ package com.adroitfirm.rydo.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.Builder.Default;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -31,5 +33,6 @@ public class Driver {
     @Column(length = 20)
     private String status; // AVAILABLE, ON_TRIP, INACTIVE
 
+    @Default
     private Boolean verified = false;
 }
