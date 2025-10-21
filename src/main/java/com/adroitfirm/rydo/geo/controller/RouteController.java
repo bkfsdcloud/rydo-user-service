@@ -70,7 +70,7 @@ public class RouteController {
     @GetMapping("/autocomplete")
     public ResponseEntity<List<PlaceSuggesstion>> autocomplete(
             @RequestParam String input,
-            @RequestParam String sessionToken,
+            @RequestParam(required = false) String sessionToken,
             @RequestParam(required = false) Coordinate cooridinate
     ) {
         return ResponseEntity.ok(mapPlaceServiceImpl.getAutocomplete(input, sessionToken, cooridinate));

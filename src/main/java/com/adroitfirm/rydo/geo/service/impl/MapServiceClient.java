@@ -105,13 +105,16 @@ public class MapServiceClient implements MapPlaceService {
 		UriComponentsBuilder urlBuilder = UriComponentsBuilder
                 .fromUriString("https://maps.googleapis.com/maps/api/place/autocomplete/json")
                 .queryParam("input", UriUtils.encode(input, StandardCharsets.UTF_8))
-                .queryParam("sessiontoken", sessionToken)
                 .queryParam("key", apiKey);
 
+		if (Objects.nonNull(sessionToken) && !sessionToken.isEmpty()) {
+			urlBuilder.queryParam("sessiontoken", sessionToken);
+		}
         if (Objects.nonNull(cooridinate)) {
         	urlBuilder.queryParam("location", cooridinate.getLat() + "," + cooridinate.getLng());
         	urlBuilder.queryParam("radius", 20000);
         }
+        urlBuilder.queryParam("components", "country:IN");
 
         ResponseEntity<PredictionResponse> predictions = restTemplate.exchange(urlBuilder.build().toUri(), HttpMethod.GET
         		, null, new ParameterizedTypeReference<PredictionResponse>() {});
@@ -121,8 +124,10 @@ public class MapServiceClient implements MapPlaceService {
         }
         
         cachedSuggestion = predictions.getBody().getPredictions();
-        redisCacheService.cacheSuggesstion(input, cachedSuggestion);
-        log.info("Caching suggestion for input : [{}]", input);
+        if (!CollectionUtils.isEmpty(cachedSuggestion)) {
+        	redisCacheService.cacheSuggesstion(input, cachedSuggestion);
+        	log.info("Caching suggestion for input : [{}]", input);
+        }
 
         return cachedSuggestion;
     }
