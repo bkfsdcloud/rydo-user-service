@@ -73,5 +73,8 @@ public class Ride {
     @PrePersist
     public void prePersist() {
         this.requestedAt = LocalDateTime.now();
+        if (status.equals("COMPLETED")) {
+        	this.completedAt = LocalDateTime.now();
+        }
     }
 }

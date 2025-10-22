@@ -46,9 +46,12 @@ public class AuthController {
         try {
         	UserDto userDto = userService.findByPhone(phone);
         	String otp = body.get("otp");
-        	if (otpService.validateOtp(phone, otp)) {
+        	int result = otpService.validateOtp(phone, otp);
+        	if (result == 0) {
         		String token = jwtUtils.generateToken(userDto);
         		return ResponseEntity.ok(ApiResponse.success(token, "Successfully Validated"));
+        	} else if (result == 1) {
+        		return ResponseEntity.badRequest().body(ApiResponse.error("OTP expired"));
         	}
     	} catch (ResourceNotFoundException e) {
     		return ResponseEntity.badRequest().body(ApiResponse.error("Mobile not registered"));

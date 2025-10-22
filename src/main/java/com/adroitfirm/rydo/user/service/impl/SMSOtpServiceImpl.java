@@ -16,9 +16,9 @@ public class SMSOtpServiceImpl implements OtpService {
 	}
 
 	@Override
-	public boolean validateOtp(String mobile, String otp) {
+	public int validateOtp(String mobile, String otp) {
 		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 
 }

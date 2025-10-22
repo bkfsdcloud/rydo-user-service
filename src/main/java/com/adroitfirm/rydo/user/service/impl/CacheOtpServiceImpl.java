@@ -1,9 +1,10 @@
 package com.adroitfirm.rydo.user.service.impl;
 
+import java.time.Duration;
 import java.util.Random;
 
-import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.adroitfirm.rydo.user.service.OtpService;
@@ -15,24 +16,25 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CacheOtpServiceImpl implements OtpService {
 
-	private final CacheManager cacheManager;
+	private final RedisTemplate<String, Object> redisTemplate;
     private final Random random = new Random();
 
     public String generateOtp(String mobile) {
         String otp = String.format("%06d", random.nextInt(999999));
-        cacheManager.getCache("otpCache").put(mobile, otp);
+        redisTemplate.opsForValue().set(mobile, otp, Duration.ofMinutes(1));
         System.out.println("OTP for " + mobile + " -> " + otp);
         return otp;
     }
 
-    public boolean validateOtp(String mobile, String otp) {
-        var cache = cacheManager.getCache("otpCache");
-        String cachedOtp = cache != null ? cache.get(mobile, String.class) : null;
-        if (cachedOtp != null && cachedOtp.equals(otp)) {
-            cache.evict(mobile);
-            return true;
+    public int validateOtp(String mobile, String otp) {
+        String cachedOtp = (String) redisTemplate.opsForValue().getAndDelete(mobile);
+        if (cachedOtp == null) {
+        	return 1;
+        } else if (cachedOtp.equals(otp)) {
+            return 0;
+        } else {
+        	return -1;
         }
-        return false;
     }
 
 }
