@@ -17,7 +17,7 @@ import com.adroitfirm.rydo.user.entity.Driver;
 import com.adroitfirm.rydo.user.exception.ResourceNotFoundException;
 import com.adroitfirm.rydo.user.mapper.DriverMapper;
 import com.adroitfirm.rydo.user.service.DriverService;
-import com.adroitfirm.rydo.user.util.ApiResponse;
+import com.adroitfirm.rydo.utility.ApiResponse;
 
 import jakarta.validation.Valid;
 

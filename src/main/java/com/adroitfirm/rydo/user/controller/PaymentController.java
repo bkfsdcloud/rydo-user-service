@@ -17,7 +17,7 @@ import com.adroitfirm.rydo.user.entity.Payment;
 import com.adroitfirm.rydo.user.exception.ResourceNotFoundException;
 import com.adroitfirm.rydo.user.mapper.PaymentMapper;
 import com.adroitfirm.rydo.user.service.PaymentService;
-import com.adroitfirm.rydo.user.util.ApiResponse;
+import com.adroitfirm.rydo.utility.ApiResponse;
 
 import jakarta.validation.Valid;
 

@@ -12,8 +12,8 @@ import com.adroitfirm.rydo.dto.UserDto;
 import com.adroitfirm.rydo.user.exception.ResourceNotFoundException;
 import com.adroitfirm.rydo.user.service.OtpService;
 import com.adroitfirm.rydo.user.service.UserService;
-import com.adroitfirm.rydo.user.util.ApiResponse;
-import com.adroitfirm.rydo.user.util.JwtUtils;
+import com.adroitfirm.rydo.utility.ApiResponse;
+import com.adroitfirm.rydo.utility.JwtUtils;
 
 import lombok.AllArgsConstructor;
 

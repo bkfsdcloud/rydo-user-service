@@ -1,12 +1,14 @@
 package com.adroitfirm.rydo.user.exception;
 
-import com.adroitfirm.rydo.user.util.ApiResponse;
+import java.util.stream.Collectors;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.stream.Collectors;
+import com.adroitfirm.rydo.utility.ApiResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

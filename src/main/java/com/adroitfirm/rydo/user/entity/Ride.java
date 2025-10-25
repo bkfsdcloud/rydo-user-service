@@ -21,8 +21,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "rides")
-@Getter
-@Setter
+@Getter@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -32,12 +31,10 @@ public class Ride {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Customer
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = false)
     private User customer;
 
-    // Assigned driver
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "driver_id")
     private Driver driver;

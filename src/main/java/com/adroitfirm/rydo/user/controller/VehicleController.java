@@ -17,7 +17,7 @@ import com.adroitfirm.rydo.user.entity.Vehicle;
 import com.adroitfirm.rydo.user.exception.ResourceNotFoundException;
 import com.adroitfirm.rydo.user.mapper.VehicleMapper;
 import com.adroitfirm.rydo.user.service.VehicleService;
-import com.adroitfirm.rydo.user.util.ApiResponse;
+import com.adroitfirm.rydo.utility.ApiResponse;
 
 import jakarta.validation.Valid;
 

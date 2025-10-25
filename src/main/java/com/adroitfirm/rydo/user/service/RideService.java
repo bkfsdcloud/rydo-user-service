@@ -2,19 +2,20 @@ package com.adroitfirm.rydo.user.service;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.adroitfirm.rydo.dto.RideDto;
+import com.adroitfirm.rydo.enumeration.RideStatus;
 import com.adroitfirm.rydo.model.kafka.RideRequested;
 import com.adroitfirm.rydo.user.entity.Ride;
-import com.adroitfirm.rydo.user.enumeration.RideStatus;
 import com.adroitfirm.rydo.user.exception.ResourceNotFoundException;
 import com.adroitfirm.rydo.user.mapper.RideMapper;
 import com.adroitfirm.rydo.user.repository.RideRepository;
-import com.adroitfirm.rydo.user.util.RideConstants;
+import com.adroitfirm.rydo.utility.RideConstants;
 
 import lombok.AllArgsConstructor;
 
@@ -90,4 +91,14 @@ public class RideService {
     	Ride ride = repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Ride not found: " + id));
     	return mapper.toDto(ride); 
     }
+
+	public RideDto getActiveRide(Long userId) {
+		
+		Optional<Ride> optional = repo.findActiveRideByUser(userId);
+		
+		if (optional.isPresent()) {
+			return mapper.toDto(optional.get());
+		}
+		return null;
+	}
 }

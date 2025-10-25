@@ -17,7 +17,7 @@ import com.adroitfirm.rydo.user.entity.Rating;
 import com.adroitfirm.rydo.user.exception.ResourceNotFoundException;
 import com.adroitfirm.rydo.user.mapper.RatingMapper;
 import com.adroitfirm.rydo.user.service.RatingService;
-import com.adroitfirm.rydo.user.util.ApiResponse;
+import com.adroitfirm.rydo.utility.ApiResponse;
 
 import jakarta.validation.Valid;
 
