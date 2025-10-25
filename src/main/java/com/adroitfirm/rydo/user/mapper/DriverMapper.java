@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
-import com.adroitfirm.rydo.user.dto.DriverDto;
+import com.adroitfirm.rydo.dto.DriverDto;
 import com.adroitfirm.rydo.user.entity.Driver;
 import com.adroitfirm.rydo.user.entity.User;
 

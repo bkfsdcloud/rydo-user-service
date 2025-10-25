@@ -1,12 +1,13 @@
 package com.adroitfirm.rydo.user.mapper;
 
-import com.adroitfirm.rydo.user.dto.RideDto;
-import com.adroitfirm.rydo.user.entity.Ride;
-import com.adroitfirm.rydo.user.entity.User;
-import com.adroitfirm.rydo.user.entity.Driver;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
+
+import com.adroitfirm.rydo.dto.RideDto;
+import com.adroitfirm.rydo.user.entity.Driver;
+import com.adroitfirm.rydo.user.entity.Ride;
+import com.adroitfirm.rydo.user.entity.User;
 
 @Mapper(componentModel = "spring")
 public interface RideMapper {

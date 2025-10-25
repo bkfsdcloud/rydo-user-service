@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adroitfirm.rydo.user.dto.UserDto;
+import com.adroitfirm.rydo.dto.UserDto;
 import com.adroitfirm.rydo.user.exception.ResourceNotFoundException;
 import com.adroitfirm.rydo.user.service.OtpService;
 import com.adroitfirm.rydo.user.service.UserService;

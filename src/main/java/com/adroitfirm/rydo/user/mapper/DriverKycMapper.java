@@ -1,12 +1,13 @@
 package com.adroitfirm.rydo.user.mapper;
 
-import com.adroitfirm.rydo.user.dto.DriverKycDto;
-import com.adroitfirm.rydo.user.entity.DriverKyc;
-import com.adroitfirm.rydo.user.entity.Driver;
-import com.adroitfirm.rydo.user.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
+
+import com.adroitfirm.rydo.dto.DriverKycDto;
+import com.adroitfirm.rydo.user.entity.Driver;
+import com.adroitfirm.rydo.user.entity.DriverKyc;
+import com.adroitfirm.rydo.user.entity.User;
 
 @Mapper(componentModel = "spring")
 public interface DriverKycMapper {

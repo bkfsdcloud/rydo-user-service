@@ -2,9 +2,10 @@ package com.adroitfirm.rydo.geo.service;
 
 import java.util.List;
 
-import com.adroitfirm.rydo.geo.dto.RideRouteDto;
-import com.adroitfirm.rydo.geo.model.PlaceCoordinate;
-import com.adroitfirm.rydo.geo.model.PlaceSuggesstion;
+import com.adroitfirm.rydo.dto.RideRouteDto;
+import com.adroitfirm.rydo.model.PlaceCoordinate;
+import com.adroitfirm.rydo.model.PlaceSuggesstion;
+
 
 public interface RedisCacheService {
 

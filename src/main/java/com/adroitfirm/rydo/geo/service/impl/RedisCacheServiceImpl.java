@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import com.adroitfirm.rydo.geo.dto.RideRouteDto;
-import com.adroitfirm.rydo.geo.model.PlaceCoordinate;
-import com.adroitfirm.rydo.geo.model.PlaceSuggesstion;
+import com.adroitfirm.rydo.dto.RideRouteDto;
 import com.adroitfirm.rydo.geo.service.RedisCacheService;
+import com.adroitfirm.rydo.model.PlaceCoordinate;
+import com.adroitfirm.rydo.model.PlaceSuggesstion;
 
 import lombok.AllArgsConstructor;
 

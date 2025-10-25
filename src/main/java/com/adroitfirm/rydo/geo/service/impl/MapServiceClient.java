@@ -15,13 +15,13 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
 
-import com.adroitfirm.rydo.geo.dto.GeocodeResponse;
-import com.adroitfirm.rydo.geo.dto.PredictionResponse;
-import com.adroitfirm.rydo.geo.model.Coordinate;
-import com.adroitfirm.rydo.geo.model.PlaceCoordinate;
-import com.adroitfirm.rydo.geo.model.PlaceSuggesstion;
+import com.adroitfirm.rydo.dto.GeocodeResponse;
+import com.adroitfirm.rydo.dto.PredictionResponse;
 import com.adroitfirm.rydo.geo.service.MapPlaceService;
 import com.adroitfirm.rydo.geo.service.RedisCacheService;
+import com.adroitfirm.rydo.model.Coordinate;
+import com.adroitfirm.rydo.model.PlaceCoordinate;
+import com.adroitfirm.rydo.model.PlaceSuggesstion;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -102,6 +102,9 @@ public class MapServiceClient implements MapPlaceService {
 			log.info("Retrieved suggestion for input [{}]from cache", input);
 			return cachedSuggestion;
 		}
+		if (Objects.isNull(cooridinate)) {
+			cooridinate = Coordinate.builder().lat(11.01601).lng(76.97031).build();
+		}
 		UriComponentsBuilder urlBuilder = UriComponentsBuilder
                 .fromUriString("https://maps.googleapis.com/maps/api/place/autocomplete/json")
                 .queryParam("input", UriUtils.encode(input, StandardCharsets.UTF_8))
@@ -111,8 +114,10 @@ public class MapServiceClient implements MapPlaceService {
 			urlBuilder.queryParam("sessiontoken", sessionToken);
 		}
         if (Objects.nonNull(cooridinate)) {
-        	urlBuilder.queryParam("location", cooridinate.getLat() + "," + cooridinate.getLng());
-        	urlBuilder.queryParam("radius", 20000);
+        	String locationrestriction = String.format("circle:%d@%f,%f", 60000, cooridinate.getLat(), cooridinate.getLng());
+        	urlBuilder.queryParam("locationrestriction", locationrestriction);
+//        	urlBuilder.queryParam("location", cooridinate.getLat() + "," + cooridinate.getLng());
+//        	urlBuilder.queryParam("radius", 60000);
         }
         urlBuilder.queryParam("components", "country:IN");
 

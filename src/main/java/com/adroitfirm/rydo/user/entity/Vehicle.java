@@ -33,6 +33,9 @@ public class Vehicle {
 
     @Column(name = "vehicle_type", length = 30)
     private String vehicleType; // SEDAN, SUV, AUTO, BIKE
+    
+    @Column(name = "vehicle_category", length = 30)
+    private String vehicleCategory; // SMALL, MEDIUM, PREMIUM, LUXURY 
 
     private Integer capacity;
 

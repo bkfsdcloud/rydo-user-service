@@ -1,6 +1,7 @@
 package com.adroitfirm.rydo.user.service;
 
-import com.adroitfirm.rydo.user.dto.GMapDto;
+
+import com.adroitfirm.rydo.dto.GMapDto;
 
 import reactor.core.publisher.Mono;
 

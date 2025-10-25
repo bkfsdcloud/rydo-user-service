@@ -6,13 +6,13 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.adroitfirm.rydo.geo.dto.RideRouteDto;
-import com.adroitfirm.rydo.geo.dto.RouteDto;
+import com.adroitfirm.rydo.dto.RideRouteDto;
+import com.adroitfirm.rydo.dto.RouteDto;
 import com.adroitfirm.rydo.geo.exception.InvalidRouteRequestException;
-import com.adroitfirm.rydo.geo.model.Coordinate;
-import com.adroitfirm.rydo.geo.model.PlaceCoordinate;
 import com.adroitfirm.rydo.geo.service.RouteService;
 import com.adroitfirm.rydo.geo.util.MapUtil;
+import com.adroitfirm.rydo.model.Coordinate;
+import com.adroitfirm.rydo.model.PlaceCoordinate;
 import com.google.maps.DirectionsApi;
 import com.google.maps.DirectionsApiRequest;
 import com.google.maps.DistanceMatrixApi;

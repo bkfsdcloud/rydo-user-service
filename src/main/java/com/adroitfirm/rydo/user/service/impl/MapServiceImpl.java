@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.adroitfirm.rydo.user.dto.GMapDto;
+import com.adroitfirm.rydo.dto.GMapDto;
 import com.adroitfirm.rydo.user.service.MapService;
 
 import reactor.core.publisher.Mono;

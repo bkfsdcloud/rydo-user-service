@@ -1,11 +1,12 @@
 package com.adroitfirm.rydo.user.mapper;
 
-import com.adroitfirm.rydo.user.dto.DriverDocumentDto;
-import com.adroitfirm.rydo.user.entity.DriverDocument;
-import com.adroitfirm.rydo.user.entity.Driver;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
+
+import com.adroitfirm.rydo.dto.DriverDocumentDto;
+import com.adroitfirm.rydo.user.entity.Driver;
+import com.adroitfirm.rydo.user.entity.DriverDocument;
 
 @Mapper(componentModel = "spring")
 public interface DriverDocumentMapper {

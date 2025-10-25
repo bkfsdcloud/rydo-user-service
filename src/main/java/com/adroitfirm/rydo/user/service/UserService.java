@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.adroitfirm.rydo.user.dto.UserDto;
+import com.adroitfirm.rydo.dto.UserDto;
 import com.adroitfirm.rydo.user.entity.User;
 import com.adroitfirm.rydo.user.exception.ResourceNotFoundException;
 import com.adroitfirm.rydo.user.mapper.UserMapper;

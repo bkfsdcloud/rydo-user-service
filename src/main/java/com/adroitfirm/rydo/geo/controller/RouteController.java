@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adroitfirm.rydo.geo.dto.MapNavigationDto;
-import com.adroitfirm.rydo.geo.dto.RideRouteDto;
-import com.adroitfirm.rydo.geo.dto.RouteDto;
-import com.adroitfirm.rydo.geo.model.Coordinate;
-import com.adroitfirm.rydo.geo.model.PlaceSuggesstion;
+import com.adroitfirm.rydo.dto.MapNavigationDto;
+import com.adroitfirm.rydo.dto.RideRouteDto;
+import com.adroitfirm.rydo.dto.RouteDto;
+import com.adroitfirm.rydo.model.Coordinate;
+import com.adroitfirm.rydo.model.PlaceSuggesstion;
 import com.adroitfirm.rydo.geo.service.impl.MapServiceClient;
 import com.adroitfirm.rydo.geo.service.impl.RouteServiceImpl;
 import com.adroitfirm.rydo.user.util.ApiResponse;

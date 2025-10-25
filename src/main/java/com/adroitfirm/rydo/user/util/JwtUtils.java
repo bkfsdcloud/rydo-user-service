@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-import com.adroitfirm.rydo.user.dto.UserDto;
+import com.adroitfirm.rydo.dto.UserDto;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -26,6 +26,7 @@ public class JwtUtils {
         return Jwts.builder()
                 .setSubject(userDto.getPhone())
                 .claim("role", userDto.getRole())
+                .claim("userId", userDto.getId())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
                 .signWith(getSigningKey())
