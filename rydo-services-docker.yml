@@ -23,7 +23,17 @@ services:
     volumes:
       - rydo-redis-data:/data
     command: ["redis-server", "--appendonly", "yes"]
+  kafka:
+    image: apache/kafka:4.0.1-rc1
+    hostname: kafka
+    container_name: kafka
+    ports:
+      - "9092:9092" # Port for clients outside the Docker network
+      - "9093:9093" # Port for internal Kafka communication (for KRaft)
+    volumes:
+      - rydo-kafka-data:/tmp/kraft-kafka-logs # Persistent volume for Kafka data
 
 volumes:
   taxi-booking-dev:
   rydo-redis-data:
+  rydo-kafka-data:
