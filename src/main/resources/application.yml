@@ -1,6 +1,10 @@
+server:
+  port: 8084
 spring:
   application:
     name: rydo-user-service
+  config:
+    import: classpath:application-common.yml
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
@@ -27,10 +31,6 @@ spring:
       host: localhost
       port: 6379
       database: 1
-
-server:
-  port: ${SERVER_PORT}
-
 google:
   maps:
     api-key: AIzaSyDqaqO6czuq1cTzTetNJU6yhnQP2b6_k8U
@@ -40,6 +40,3 @@ logging:
     root: INFO
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql: TRACE
-jwt:
-  secret: YOUR-256-BIT-SECRET-YOU-MUST-KEEP-SAME-AS-USER-SERVICE
-  expirationMs: 7200000 # 1000 * 60 * 60 * 2 # 10 hours

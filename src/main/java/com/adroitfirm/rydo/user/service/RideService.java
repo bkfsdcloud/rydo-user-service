@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.adroitfirm.rydo.dto.RideDto;
 import com.adroitfirm.rydo.enumeration.RideStatus;
-import com.adroitfirm.rydo.model.kafka.RideRequested;
+import com.adroitfirm.rydo.model.kafka.RideEvent;
 import com.adroitfirm.rydo.user.entity.Ride;
 import com.adroitfirm.rydo.user.exception.ResourceNotFoundException;
 import com.adroitfirm.rydo.user.mapper.RideMapper;
@@ -30,7 +30,7 @@ public class RideService {
     	Ride ride = repo.save(mapper.toEntity(r));
     	RideDto rideDto = mapper.toDto(ride);
     	
-    	RideRequested rideRequested = RideRequested.builder()
+    	RideEvent rideRequested = RideEvent.builder()
 				.rideId(rideDto.getId())
 				.status(RideStatus.REQUESTED.name())
 				.userId(rideDto.getCustomerId())
@@ -43,17 +43,18 @@ public class RideService {
     }
     
     public String event(RideDto rideDto, RideStatus status) {
-    	RideRequested rideRequested = null;
+    	RideEvent rideRequested = null;
     	switch (status) {
     		case CANCELLED:
-    			rideRequested = RideRequested.builder()
+    			rideRequested = RideEvent.builder()
 				.rideId(rideDto.getId())
 				.status(status.name())
+				.cancelledReason(rideDto.getCancelledReason())
 				.build();
     			kafkaTemplate.send(RideConstants.RIDE_CANCELLED_TOPIC, rideRequested);
     			return "Cancelled";
 			case ACCEPTED:
-				rideRequested = RideRequested.builder()
+				rideRequested = RideEvent.builder()
 				.driverId(rideDto.getDriverId())
 				.rideId(rideDto.getId())
 				.status(status.name())
@@ -61,7 +62,7 @@ public class RideService {
     			kafkaTemplate.send(RideConstants.RIDE_ACCEPTED_TOPIC, rideRequested);
     			return "Accepted";
 			case COMPLETED:
-				rideRequested = RideRequested.builder()
+				rideRequested = RideEvent.builder()
 				.driverId(rideDto.getDriverId())
 				.rideId(rideDto.getId())
 				.status(status.name())
@@ -69,10 +70,11 @@ public class RideService {
     			kafkaTemplate.send(RideConstants.RIDE_COMPLETED_TOPIC, rideRequested);
     			return "Completed";
 			case DENIED:
-				rideRequested = RideRequested.builder()
+				rideRequested = RideEvent.builder()
 				.driverId(rideDto.getDriverId())
 				.rideId(rideDto.getId())
 				.status(status.name())
+				.denialReason(rideDto.getDenialReason())
 				.build();
     			kafkaTemplate.send(RideConstants.RIDE_DENIED_TOPIC, rideRequested);
     			return "Denied";
